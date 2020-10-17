@@ -1,0 +1,28 @@
+@import './colors';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: $Color-Body;
+    font-size: 1.6rem;
+}
+
+@mixin ui-defaults {
+    margin: 0 10rem;
+    background-color: white;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.ui-container {
+    @include ui-defaults();
+}
