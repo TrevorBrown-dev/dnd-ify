@@ -1,34 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import getSpells from '../requests/getSpells';
-import getSpell from '../requests/getSpell';
+import getSpells from '../getters/getSpells';
 import '../scss/App.scss';
 import Spell from '../types/Spell';
 const App = () => {
   const [spells, setSpells] = useState<Spell[]>([]);
-  
+
+
+
   useEffect(() => {
-    getSpells({
-
-    }).then((spellTypes) => {
-      spellTypes.forEach(spellType => {
-        getSpell(spellType.url).then(spell => {
-          setSpells(oldSpells => [...oldSpells, spell]);
-        });
-
-      })
-    });
+    console.log("running");
+    getSpells({ level: 0}, setSpells);  
   }, []);
 
   const renderSpells = () => {
-    console.log(spells);
     return spells?.map(spell => {
-      return (<li>
+      return (<li key={spell.index}>
         <h1>{spell.name}</h1>
         <p>
           {spell.desc[0]}
         </p>
-      </li>)
-    })
+      </li>
+      );
+    });
   }
 
 
